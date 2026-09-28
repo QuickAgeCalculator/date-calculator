@@ -19,7 +19,16 @@
     <!-- Tailwind CSS CDN -->
 
 
-    <link rel="stylesheet" href="./css/styles.css">
+    <!-- 1. Output CSS Preload & Non-blocking Load (Render Blocking ko 0ms karne ke liye) -->
+    <link rel="preload" href="./css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./css/styles.css"></noscript>
+
+
+    <!-- 2. Minimal Critical CSS (Above-the-fold content rapid render ke liye) -->
+    <style>
+        body { margin: 0; background-color: #f8fafc; color: #1e293b; font-family: system-ui, -apple-system, sans-serif; }
+        header { position: sticky; top: 0; z-index: 50; background-color: rgba(255, 255, 255, 0.95); border-bottom: 1px solid #e2e8f0; }
+    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
 
